@@ -1,0 +1,11 @@
+/.cache
+/.landscape
+/.local
+/.mono
+/.vscode
+/.vscode-server
+/build
+/Project
+/.bash_history
+/.motd_shown
+/.sudo_as_admin_successful
