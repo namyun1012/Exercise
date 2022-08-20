@@ -1,8 +1,8 @@
 #ifndef __DB_LINKED_LIST_H__
 #define __DB_LINKED_LIST_H__
 
-#define TRUE 0
-#define FALSE 1
+#define TRUE 1
+#define FALSE 0
 typedef int Data;
 
 typedef struct _node {
@@ -13,7 +13,9 @@ typedef struct _node {
 }Node;
 
 typedef struct _DLinkedList {
+
     Node *head;
+    Node *tail;
     Node *cur;
     int numOfData;
 
@@ -30,5 +32,7 @@ int LNext (List *plist, Data* pdata);
 int LPrevious (List *plist, Data* pdata);
 
 int LCount(List &plist);
+
+Data LRemove(List *plist);
 
 #endif
