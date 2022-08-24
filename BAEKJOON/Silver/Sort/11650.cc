@@ -1,7 +1,11 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+/** 
+*@param vec 벡터임
+*@param N 크기
 
+*/
 void sort(std::vector<std::pair<int, int>> &vec, int N) {
     for(int i = 0; i < N; i++) {
         for(int j = i; j <N; j++) {
