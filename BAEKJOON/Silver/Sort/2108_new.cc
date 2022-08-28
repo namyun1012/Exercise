@@ -24,7 +24,9 @@ int main() {
     for(int i = 0; i <= N; i++)
         sum += vec[i];
     
-    std::cout << round(sum /vec.size()) << std::endl;
+    int round_result = round(sum /vec.size());
+    if(round_result == -0) round_result = 0;
+    std::cout << round_result << std::endl;
 
     //2 중앙값
     std::cout << vec[(vec.size()/2)] << std::endl;
@@ -67,10 +69,10 @@ int main() {
         std::cout << check_vec[1] << "\n";
     
     else
-        return 0;
+        return 1;
 
     //4 범위
-    int result = vec[vec.size()-1] - vec[0];
+    int result = vec.back() - vec.front();
     std::cout << result << "\n";
     return 0;
 }
