@@ -2,16 +2,17 @@
 #include <vector>
 
 long long power(int a, int b, int c) {
-    long long tmp = 1;
+    
 
     if(b == 1)
         return a % c;
     
+    long long tmp = power(a, b/2, c);
 
     if(b % 2 == 0)
-        return power(a, b/2, c);
+        return tmp * tmp % c;
     
-    return power((a, b/2, c) * a) % c;
+    return tmp * tmp % c * a % c;
     
 }
 
