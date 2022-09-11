@@ -16,7 +16,7 @@ public:
 int main( ) {
     std::ios::sync_with_stdio(0); // time code
     std::cin.tie(0);
-    std::priority_queue<int,std::vector<int>, std::greater<int>> que;
+    std::priority_queue<int,std::vector<int>, comp> que;
     int N;
     std::cin >> N;
     
