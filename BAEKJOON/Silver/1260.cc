@@ -8,7 +8,7 @@ bool visited[1002];
 int main() {
     int N, M, V;
     std::cin >> N >> M >> V;
-    std::vector<int> adj[N];
+    std::vector<int> *adj;
 
     for(int i = 0; i < M; i++) {
         int fromV, toV;
@@ -21,6 +21,6 @@ int main() {
     s.push(1);
 
     while(!s.empty()) {
-        adj
+        
     }
 }
