@@ -6,11 +6,12 @@
 int board[502][502] = {};
 bool vis[502][502];
 
-int n = 7, m =10;
+
 int dx[4] = {1, 0, -1, 0};
 int dy[4] = {0, 1, 0, -1};
 
 int main() {
+    int n, m;
     std::queue<std::pair<int, int>> q;
     vis[0][0] = 1;
     q.push({0, 0});
