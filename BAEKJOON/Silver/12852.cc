@@ -1,4 +1,4 @@
-#include <iostream> // use greedy
+#include <iostream> // use DP
 #include <algorithm>
 
 int arr[1000005];
