@@ -1,36 +1,51 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-struct cmp {
-    bool operator()(const std::pair<int, int>& a, const std::pair<int, int>& b) const{
-        if(a.first == b.first)
-            return a.second > b.second;
 
-        else
-            return a.first < b.first;     
-    }
-};
+std::pair<int, int> arr[102];
+int dp[102][100002]; // dp[i][j] 
 
 
 int main() {
     int N, K;
     std::cin >> N >> K;
-    std::vector<std::pair<int, int>> vec;
-    std::vector<std::pair<int, int>> vec_result;
-    for(int i = 0; i <N; i++) {
-        int w, v;
-
-        std::cin >> w >> v;
-        vec.push_back({w, v});
+    
+    int W, V;
+    
+    for(int i = 1; i <= N; i++) {
+        std::cin >> W >> V;
+        arr[i] = {W, V};
     }
 
-    int vec_size = vec.size();
-    for(int i = 0; i < vec_size; i++)
-       vec_result.push_back({(vec[i].first / vec[i].second), vec[i].first});
-
-    std::sort(vec_result.begin(), vec_result.end());
-
     
+    int cur_weight;
+    int cur_value;
+
+    for(int i = 1; i <= N; i++) { // 중복 방지 위해 [i][j], 이럴 시 물건 1개당 1개만 사용가능함
+        cur_weight = arr[i].first;
+        cur_value = arr[i].second;
         
+        for(int j = 1; j <= K; j++) {
+            dp[i][j] = dp[i-1][j];
+            if(j >= cur_weight)
+                dp[i][j] = std::max(dp[i][j], dp[i-1][j-cur_weight] + cur_value);
+                // 예전 꺼 까지 사용한 것 끼리 비교
+                //dp[i][j-cur_weight] 시 그 떄 i 것이 계속 들어감
+            // i는 i개 
+            else {
+                
+            }
+        }
+    }
+
+    std::cout << dp[N][K];
+    return 0;   
 
 }
+
+// 중복을 방지 하기 위해서 i개의 물건 까지 씀 [i][j]의 이차원 배열로
+/*1 9 2 3
+0 0 0 0 0 0 0 0 0
+0 3 3 3 3 3 3 3 3
+0 3 
+*/ 
