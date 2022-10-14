@@ -103,7 +103,7 @@ int main() {
             for(auto ele : q) {
                 std::cout << ele;
                 if(ele != q.back())
-                    std::cout << ",";
+                    std::cout << ","; q.back()은 원소를 반환해서 같은 경우 ,가 안나옴
             }
             std::cout << "]\n";
         }
