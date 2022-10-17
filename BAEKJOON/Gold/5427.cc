@@ -102,7 +102,7 @@ int main() {
         }
             
         else {
-            std::cout << "IMPOSSIBLE" << "\n";
+            std::cout << "IMPOSSIBLE" << "\n"; // Impossible ㅋㅋㅋㅋㅋㅋㅋㅋㅋ
         }
 
         

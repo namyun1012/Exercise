@@ -3,7 +3,6 @@
 
 long long power(int a, int b, int c) {
     
-
     if(b == 1)
         return a % c;
     
