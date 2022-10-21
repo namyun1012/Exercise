@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-// 많은 것을 못 받아서 나중에 다시 조정하기
+// 0이 많은 것을 못 받아서 나중에 다시 조정하기
 int board[9][9];
 int visited[9][9];
 std::vector<std::pair<int, int>> vec_zero; // 0 의 좌표를 모아놓음
