@@ -1,11 +1,12 @@
 #include <iostream>
-#include <string>
-#include <stdlib.h>
-#include <stdio.h>
 
 int main() {
-    std::string str;
-    int num = std::stoi("[1,2,3,4]");
-    std::cout << num;
+    for(int i = 0; i < 10; i++) {
+        if(true) 
+            printf("OOO\n");
+        else 
+            printf("NO\n");
+    }
+
     return 0;
 }

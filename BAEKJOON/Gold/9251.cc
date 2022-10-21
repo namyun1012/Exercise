@@ -2,34 +2,25 @@
 #include <string>
 #include <vector>
 //max는 1000
-int dp[1002];
-int arr1[1002];
-int arr2[1002];
+int dp[1002][1002];
+
+
 
 int main() {
-    std::string str1;
-    std::string str2;
-
-    int size1 = str1.size();
-    int size2 = str2.size();
-
+    std::string str1, str2;
     std::cin >> str1 >> str2;
 
-    for(int i = 0; i < size1 ; i++) {
-        if(str1[i] == str2[0]) {
-            dp[0] = 1;
-            break;
+    int size_1= str1.size();
+    int size_2 = str2.size();
+
+    for(int i = 1; i <= size_1; i++) { // dp[]
+        for(int j = 1; j <= size_2; j++) {
+            dp[i][j] = std::max(dp[i-1][j], dp[i][j-1]);
+            if(str1[i-1] == str2[j-1])
+                dp[i][j] = dp[i-1][j-1] + 1;
         }
     }
 
-    for(int i = 1; i < size2; i++) {
-        dp[i] = dp[i-1];
-        int temp = 0;
-        for(int j = 0; j < size1; j++) {
-            
-        }
-    }
-
-    std::cout << dp[size1-1] << "\n";
+    std::cout << dp[size_1][size_2];
     return 0;
 }
