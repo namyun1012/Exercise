@@ -19,7 +19,7 @@ int main() {
         for(int i = 0; i < m; i++) {
             int fromV, toV, weight;
             std::cin >> fromV >> toV >> weight;
-            if(board[fromV][toV] != INF) { // 중복되는 것이 있을 때는 작은 거를 받아야 함
+            if(board[fromV][toV] != INF) { // 중복되는 것이 있을 때는 작은 거를 받아야 함 
                 board[fromV][toV] = std::min(board[fromV][toV], weight);
                 board[toV][fromV] = board[fromV][toV];
                 continue;
