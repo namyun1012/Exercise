@@ -8,9 +8,8 @@ std::vector<std::pair<int, int>> vec_zero; // 0 의 좌표를 모아놓음
 
 bool answer_trued = false; // 정답 찾았을 때 더 이상의 보드 변경 중단
 /*
-    123
-    456
-    789
+    bt를 진행할 때 다른 것과 다르게 for 문으로 찾을 필요가 없었음
+
 
 */
 bool check(int x, int y, int temp) {
@@ -39,20 +38,18 @@ bool check(int x, int y, int temp) {
     return true;
 }
 
-bool check_answer() {
-    for(auto pair : vec_zero) {
-        if(board[pair.first][pair.second] == 0)
-            return false;
-    }
-
-    return true;
-}
-
-void bt(int count) {
+void bt(int n) {
     
-    if(count == vec_zero.size()) {
-        answer_trued = true;     
-        return ;
+    if(n == vec_zero.size()) {
+        answer_trued = true; 
+        for(int i = 0; i < 9; i++) {
+            for(int j = 0; j < 9; j++) {
+                std::cout << board[i][j] << " ";
+            }
+            std::cout << "\n";
+        }
+   
+        exit(0);
     }
 
     if(answer_trued) {
@@ -60,17 +57,19 @@ void bt(int count) {
     }
 
     
-    for(auto pair : vec_zero) {
-        int i = pair.first; int j = pair.second;
-        if(visited[i][j] == 1) continue;
-        for(int k = 1; k <= 9; k++) {
+    int index = n;
+    int i = vec_zero[index].first; int j = vec_zero[index].second;
+    if(board[i][j] != 0) return ; // 실질적으로 작동하지 않음
+    
+    for(int k = 1; k <= 9; k++) {
             
-            if(!check(i,j,k)) continue;
-            board[i][j] = k;      
-            bt(count + 1);
-             
-        }
+        if(!check(i,j,k)) continue;
+        board[i][j] = k;      
+        bt(n + 1);
+        board[i][j] = 0;   // 최적해를 못 찾았을 때 다시 초기화 해줌 for 문 없어도 작동함
     }
+
+     
 }
 
 
@@ -87,13 +86,6 @@ int main() {
     }
     
     bt(0);
-
-    for(int i = 0; i < 9; i++) {
-        for(int j = 0; j < 9; j++) {
-            std::cout << board[i][j] << " ";
-        }
-        std::cout << "\n";
-    }
 
 
     return 0;
