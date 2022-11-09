@@ -1,60 +1,80 @@
 #include <iostream>
 #include <queue>
-#include <tuple>
 #include <vector>
+#include <tuple>
+#include <algorithm>
 
-std::vector<std::pair<int, int>> adj[10002];
-int visited[10002]; // 이 정점을 방문했는가?
+int arr[302];
+std::vector<std::pair<int, int>> adj[302];
+int visited[302];
+/*
+    가상의 노드를 만들어서 더하는 방향으로 구해야 했다.
+    각 노드에 접근 할 때 물 파는 비용이랑 최솟값을 비교하는 방법은 안됨
+    접근 할 때 그게 최소 치인지 모름 + 
 
-int cnt = 0;
-int result = 0;
-
+*/
 int main() {
-    int V, E;
-    std::cin >> V >> E;
+    std::ios::sync_with_stdio(0); // time code
+    std::cin.tie(0);
 
-    int value;
-    for(int i = 0; i < V; i++) {
-        std::cin >> value;
+    int n;
+    int min_result = 1e9;
+    std::cin >> n;
 
+    for(int i = 1; i <= n ; i++) {
+        std::cin >> arr[i];
     }
     
-    int startV, toV, weight;
-    for(int i = 0; i < E; i++) {
-        std::cin >> startV >> toV >> weight;
-        adj[startV].push_back({weight, toV}); // 무방향 그래프이므로 쌍으로
-        adj[toV].push_back({weight, startV});
+    for(int i = 1; i <= n ; i++) {
+        adj[0].push_back({arr[i], i});
     }
-    //weigth, startV, toV
-    std::priority_queue<std::tuple<int, int, int>, 
-                        std::vector<std::tuple<int, int, int>>,
-                        std::greater<std::tuple<int, int, int>>> pq; //최소 힙
 
-    visited[1] = 1;
-    for(auto nxt : adj[1])
-        pq.push({nxt.first, 1, nxt.second});
+
+    for(int i = 1; i <= n ; i++) {
+        for(int j = 1; j <= n; j++) {
+            int temp;
+            std::cin >> temp;
+            adj[i].push_back({temp, j});
+        }
+    }
+                        // W ,start ,To
     
-    while(cnt < V-1) { // 간선의 수가 V-1개가 될 때까지
-        int c, start, end;
-        std::tie(c, start, end) = pq.top();
-        pq.pop();
+
+    
+    
+   
+   
         
+        std::priority_queue<std::tuple<int, int, int>,
+                        std::vector<std::tuple<int, int, int>>,
+                        std::greater<std::tuple<int, int, int>> > pq;
 
-        if(visited[end]) continue;
-        visited[end] = 1;
-        cnt++;
-        result += c;
-
-        for(auto nxt : adj[end]) {
-            if(!visited[nxt.second])
-                pq.push({nxt.first, end, nxt.second});
-            
-
+        visited[0] = 1;
+        int result = 0;
+        
+        for(auto nxt : adj[0]) {
+            pq.push({nxt.first,  0, nxt.second});
         }
 
-    }
 
+        while(!pq.empty()) {
+            int weight, st, en;
+            std::tie(weight, st, en) = pq.top();
+            pq.pop();
+
+            if(visited[en]) continue;
+            visited[en] = 1;
+            result += weight;
+
+
+
+            for(auto nxt : adj[en]) {
+                if(visited[nxt.second]) continue;
+                pq.push({nxt.first, en, nxt.second});
+            }
+        }
+    
+    
     std::cout << result;
     return 0;
 }
-
