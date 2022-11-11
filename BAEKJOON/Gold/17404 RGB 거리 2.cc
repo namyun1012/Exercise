@@ -10,7 +10,7 @@ long long dp[1002][3];
 int main() {
     int n;
     std::cin >> n;
-
+    
     
 
     
