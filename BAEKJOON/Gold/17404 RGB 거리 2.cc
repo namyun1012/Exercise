@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 /*
-    나중에
+    dp 배열을 각각 경우의 수에 따라 3개로 분류함
 */
 
 int arr[1002][3];
