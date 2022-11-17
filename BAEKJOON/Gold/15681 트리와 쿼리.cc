@@ -39,6 +39,7 @@ int main() {
     }
     
     //  BFS로 부모 자식 관계 설정, 트리를 만듬
+    // 생각해 보니 별 필요 없는 듯 위에서 visited로 구분하면 그만이긴 했음
     std::queue<int> que;
     que.push(r);
     visited[r] = 1;
