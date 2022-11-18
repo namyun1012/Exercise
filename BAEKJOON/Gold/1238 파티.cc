@@ -52,8 +52,10 @@ int main() {
                         std::vector<std::pair<int, int>>,
                         std::greater<std::pair<int, int>> > pq;
         
+        // distance를 INF로 초기화
         std::fill(distances, distances + n + 1, INF);
 
+        // 시작점 설정
         distances[i] = 0;
         pq.push({0, i});
         
@@ -61,9 +63,12 @@ int main() {
             auto cur = pq.top();
             pq.pop();
 
+            // 현재 점 까지의 거리보다 현재 간선의 길이가 클 경우 무시함
             if(distances[cur.second] < cur.first) continue;
             for(std::pair<int, int> nxt : adj[cur.second]) {
+                // 다음 노선의 거리가 현재 점 까지의 거리 + 다음 노선
                 if(distances[nxt.second] < distances[cur.second] + nxt.first) continue;
+                
                 distances[nxt.second] = distances[cur.second] + nxt.first;
                 pq.push({distances[nxt.second], nxt.second});
 
