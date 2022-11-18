@@ -3,7 +3,7 @@
 #include <cmath>
 using namespace std;
 /*
-    이진수 처리하다 개고생
+    이진수 처리하다 개고생 Hello World
 
 */
 int board[18][18];
