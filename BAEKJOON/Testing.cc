@@ -1,15 +1,10 @@
 #include <iostream>
-#include <String>
-
+#include <string>
+#include <map>
 int main() {
-    for(int i = 0; i < 10; i++) {
-        if(true) 
-            printf("OOO\n");
-        else 
-            printf("NO\n");
-    }
-    
-    std::string str = "123";
-    std::cout << str;
+    std::map<std::string, int> m;
+    std::string temp = "Testing";
+
+    std::cout << m[temp]; 
     return 0;
 }
