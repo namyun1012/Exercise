@@ -9,6 +9,7 @@ int parent[500002];
 int getParent(int n) {
     if(parent[n] == n) return n;
 
+    // 경로 압축 모든 값의 부모 노드를 root로 만듬
     return parent[n] = getParent(parent[n]);
 }
 
@@ -17,6 +18,7 @@ void unionParent(int a, int b) {
     b = getParent(b);
     if(a == b) return ;
     
+    // 작은 원소가 root 가 되게 한다.
     if(a < b)
         parent[b] = a;
     else    
