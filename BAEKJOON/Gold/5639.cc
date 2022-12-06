@@ -1,22 +1,49 @@
 #include <iostream>
 #include <deque>
+#include <vector>
 
+int tree[10002];
+/*
+    순회는 재귀로 하자
+    푼 방향이 잘못되었었음
+*/
+// st == root
+void postOrder(int st, int en) {
+    if(st > en) return ;
 
-std::deque<int> postOrder;
-int arr[10002]; // 전위 순회 값
-int main() {
-    int temp;
-    for(int i = 0; i < 9; i++) {
-        std::cin >> arr[i];    
-    }    
-
-    postOrder.push_back(arr[0]);
-
-    for(int i = 1; i < 9; i++) {
-        
-
-
-
+    if(st == en) {
+        std::cout << tree[st] << "\n";
+        return ;
     }
 
+    // st < en 인 경우임
+    int slice;
+    for(slice = st; slice <= en; slice++) {
+        if(tree[st] < tree[slice]) {
+            break;
+        }
+    }
+    
+    postOrder(st + 1, slice - 1);
+    postOrder(slice, en);
+    std::cout << tree[st] << "\n";
+    return ;
+}
+
+
+
+
+int main() {
+    int index = 0;
+    int temp;
+    while(std::cin >> temp) {
+        tree[index] = temp;
+        index++;
+    }
+
+
+
+
+    postOrder(0, index - 1);
+    return 0;
 }
