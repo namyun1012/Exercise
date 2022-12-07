@@ -6,6 +6,7 @@ int tree[10002];
 /*
     순회는 재귀로 하자
     푼 방향이 잘못되었었음
+    index 를 이용해서 재귀를 진행하는 것을 바로 떠올리기는 어려웠다.
 */
 // st == root
 void postOrder(int st, int en) {

@@ -70,7 +70,7 @@ int main() {
                 temp[1] = polys[index][1];
                 temp[2] = polys[index][2];
 
-                // 회전은 2번 하고
+                // 회전은 4번 하고
                 for(int cir = 0; cir < 4; cir++) {
                    
                    if(cir == 0) {}

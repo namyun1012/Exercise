@@ -35,6 +35,7 @@ int main() {
     } std::cout << "\n\n";
 
     j = 0;
+    
     for(int i = 0; i < s.size(); ++i) {
         while(j > 0 && s[i] != p[j]) j = f[j-1];
         if(s[i] == p[j]) j++;
