@@ -12,36 +12,44 @@
 
     A[i][j];
 
-
-
 */
-
 int main() {
     long long n, k;
     std::cin >> n >> k;
 
+    // 기본값
     long long st = 1;
-    long long en = n;
-
+    long long en = n*n;
 
     // st, en 을 index 로 써보자
     while (st <= en)
     {
-        std::cout << st << " " << en << "\n";
-        // 최소 st * en 만큼의 칸 보다는 크거나 같음 
-        long long temp = st * en;
         
+        long long mid = (st + en)/2;
 
-        if(k > temp) {
-            st++;
+        /*
+            1 ~ n 까지 해서
+            mid 밑에 몇 개의 index 가 있는지 확인함        
+
+        */
+        long long sum = 0;
+        for(long long i = 1; i <= n ;i++) {
+            sum += std::min(mid / i, n);
+        }
+      
+        // 인덱스가 K보다 높을 때
+        if(sum >= k) {
+            en = mid - 1;
+    
         }
 
-        else {
-            en--;
+        else{
+            st = mid + 1;
         }
+        
     }
    
-   std::cout << st * en ;
+   std::cout << st;
    return 0;
 
 }
