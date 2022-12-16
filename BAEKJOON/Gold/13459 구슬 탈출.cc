@@ -23,6 +23,7 @@ pair<int, int> hole;
     무수히 많은 조정
     좌표 이동하는 방식
     개수 조건 등을 여러가지 조절해야 했음
+    구슬 탈출 2 랑 똑같은 문제
 
 */
 
@@ -49,6 +50,7 @@ int main() {
 
     queue<pair<pair<int, int>, pair<int, int>>> q;
     q.push({{red.first, red.second}, {blue.first, blue.second}});
+    // 0번 이동 했을 때 1, 1번 이동 했을 때 2 
     visited[red.first][red.second][blue.first][blue.second] = 1;
 
     while(!q.empty()) {
@@ -57,7 +59,7 @@ int main() {
         auto cur_blue = q.front().second;
         // Testing std::cout << cur_red.first << " " << cur_red.second << " " << cur_blue.first << " " << cur_blue.second <<  "\n";
         if(visited[cur_red.first][cur_red.second][blue.first][blue.second] > 10) {
-            std::cout << -1;
+            std::cout << 0;
             exit(0);
             break;
         }
@@ -76,7 +78,7 @@ int main() {
             int nxt_blue_x = cur_blue.first;
             int nxt_blue_y = cur_blue.second;
             
-            // Red 우선 이동 이동할 때 딱 이동할 위치 까지만 진행
+            // Red 우선 이동
             while(true) {      
                 if(board[nxt_red_x + dx[dir]][nxt_red_y + dy[dir]] != '#' && board[nxt_red_x][nxt_red_y] != 'O') {
                     nxt_red_x += dx[dir];
@@ -149,7 +151,7 @@ int main() {
             if(blue_reached) continue;
 
             if(red_reached && visited[cur_red.first][cur_red.second][cur_blue.first][cur_blue.second] <= 10) {
-                std::cout << visited[cur_red.first][cur_red.second][cur_blue.first][cur_blue.second];
+                std::cout << 1;
                 exit(0);
             }
             if(visited[nxt_red_x][nxt_red_y][nxt_blue_x][nxt_blue_y]) continue;
@@ -159,6 +161,6 @@ int main() {
 
     }
 
-    std::cout << -1;
+    std::cout << 0;
     return 0;
 }
