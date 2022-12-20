@@ -1,4 +1,5 @@
 /*
+    비트마스킹 학습용
     비트마스킹을 사용해 기록함
     모든 도시를 방문했다는 것은 bit 상태가 (1 << N) - 1의 상태임
     
@@ -33,7 +34,7 @@ int dfs(int cur_node, int cur_bit) {
     
     // 최소값을 찾기 위해 우선 INF 로 지정
     dp[cur_node][cur_bit] = INF;
-    
+
     for(int i = 0; i < n; i++) {
         // 이 노드를 이미 방문했거나 갈 수가 없을 경우 continue
         if(cur_bit & (1 << i) || board[cur_node][i] == 0) continue;
