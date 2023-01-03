@@ -9,7 +9,7 @@ function Library(props) {
             <Book name ="처음 만난 React" numOfPage = {500} />
 
         </div>
-    )
+    );
 }
 
 export default Library;
