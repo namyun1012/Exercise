@@ -7,7 +7,7 @@ using namespace std;
     LCA 생성에 필요한
     sparse table 자료구조임
     log를 사용하므로 약간 생소해서 다 자세히 알아봐야 할 듯
-
+    
 */
 int m, Q;
 int fx[20][200003];
