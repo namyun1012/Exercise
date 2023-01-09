@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import Accommodate from './chapter_07/Accmmodate';
+import Counter from './chapter_07/Example';
+import Toggle from './chapter_08/example1';
+
 import './index.css';
-import App from './App';
+
 import reportWebVitals from './reportWebVitals';
-import Library from './chapter_03/Library';
-import Clock from './chapter_04/Clock';
-import CommentList from './chapter_05/CommentList';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 /*
@@ -20,7 +21,7 @@ setInterval(() => {
 
 root.render(
   <React.StrictMode>
-    <CommentList/>
+    버튼 임<Toggle />
   </React.StrictMode>
 ); 
 // React 18 부터 이전과 다르게 ReactDom.render를 못씀
