@@ -22,7 +22,7 @@ void dfs(int cur) {
     for(int nxt : adj[cur]) {
         if(depth[nxt] == -1) {
             // 바로 위의 부모는 현재임
-            parent[nxt][0] = cur;
+            parent[nxt][0] = cur; // nxt의 2^0 번째 부모는 cur 임
             depth[nxt] = depth[cur] + 1;
             dfs(nxt);
         }
@@ -52,21 +52,27 @@ int LCA(int u, int v) {
 
     int diff = depth[u] - depth[v];
 
+    // u와 v의 높이를 맞춰줌
     for(int i = 0; diff > 0; i++) {
+
+        // 이진수로 나타냈을 때 1일시 변경
         if(diff % 2 == 1)
             u = parent[u][i];
 
         diff /= 2;
     }
 
+    // 당연히 u와 v가 다를 때만 진행함
     if(u != v) {
         for(int i = MAX_log - 1; i >= 0; i--) {
+            // tree 내부이고 부모가 다르면 
             if(parent[u][i] != -1 && parent[u][i] != parent[v][i]) {
                 u = parent[u][i];
                 v = parent[v][i];
             }
         }
-
+        // >> 결과적으로 LCA 바로 이전까지 올라가므로 
+        // u의 부모가 결괏값
         u = parent[u][0];
     }
 

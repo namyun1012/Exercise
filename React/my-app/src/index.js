@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Accommodate from './chapter_07/Accmmodate';
 import Counter from './chapter_07/Example';
+import ConfirmButton from './chapter_08/ConfirmButton';
 import Toggle from './chapter_08/example1';
+import LandingPage from './chapter_09/LandingPage';
 
 import './index.css';
 
@@ -21,7 +23,7 @@ setInterval(() => {
 
 root.render(
   <React.StrictMode>
-    버튼 임<Toggle />
+    <LandingPage />
   </React.StrictMode>
 ); 
 // React 18 부터 이전과 다르게 ReactDom.render를 못씀
