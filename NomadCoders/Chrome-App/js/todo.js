@@ -6,7 +6,7 @@ const TODOS_KEY = "toDos"
 
 const savedToDos = localStorage.getItem(TODOS_KEY);
 
-const toDos = [];
+let toDos = [];
 
 function saveToDos() {
     localStorage.setItem("toDos", JSON.stringify(toDos));
@@ -15,28 +15,42 @@ function saveToDos() {
 
 function deleteToDo(event) {
     const li = event.target.parentElement;
-    li.remove();    
+    toDos = toDos.filter(toDo => toDo.id !== parseInt(li.id));
+    li.remove();
+    saveToDos();
 }
 
 
-function paintTodo(newTodo) {
+function paintTodo(newTodoObj) {
     const li = document.createElement("li");
     const span = document.createElement("span");
     const button = document.createElement("button");
+    
     button.innerText ="❌";
     button.addEventListener("click", deleteToDo);
+    
     li.appendChild(span);
     li.appendChild(button);
-    span.innerText = newTodo;
     toDoList.appendChild(li);
+
+    li.id = newTodoObj.id;
+    span.innerText = newTodoObj.text;
+    
+    
 }
 
 function handleToDoSubmit(event) {
     event.preventDefault();
     const newTodo = toDoInput.value;
     toDoInput.value = "";
-    toDos.push(newTodo);
-    paintTodo(newTodo);
+    
+    const newTodoObj = {
+        text:newTodo,
+        id : Date.now(),
+    };
+
+    toDos.push(newTodoObj);
+    paintTodo(newTodoObj);
     saveToDos();
 }
 
@@ -46,8 +60,17 @@ function sayHello(item) {
     console.log(item);
 }
 
-if(saveToDos != null) {
+
+if(savedToDos != null) {
     const parsedToDos = JSON.parse(savedToDos);
-    parsedToDos.forEach(sayHello);
+    toDos = parsedToDos;
+    parsedToDos.forEach(paintTodo);
 
 }
+
+// delete  할 때 사용
+function Filter() {
+
+}
+
+[1,2,3,4].filter(Filter)
